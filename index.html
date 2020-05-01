@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<!-- Creating qui start display -->
+<div class="container" id="start" style="display: none;">
+<div class="card m-5">
+    <h1 class="card-header text-center">Quiz</h1>
+    <div class="card-body p-5 text-center">
+
+        <h4 class="card-text">Press start button to begin quiz</h4>
+        <a href="#" class="btn btn-primary">Start Quiz</a>
+    </div>
+</div>
+</div>
+<!-- Creating quiz display -->
+<div class="container" id="quiz" style="display: none ;">
+<div class="card m-5">
+    <div class="card-body">
+        <h4 class="card-text" id="title"> Question here</h4>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" id="choice1">A</li>
+        <li class="list-group-item" id="choice2">B</li>
+        <li class="list-group-item" id="choice3">C</li>
+        <li class="list-group-item" id="choice4">D</li>
+    </ul>
+    <div class="card-body" id="timer">
+
+    </div>
+</div>
+</div>
+<!-- Saving highscores and initials -->
+<div class="container" id="saveHighscores" style="display: none;">
+<div class="jumbotron m-4 text-center">
+    <h1 class="display-4" id="score">**</h1>
+    <p>Enter your initials here</p>
+    <div class="input-group mb-3" id="initials">
+    <input type="text" class="form-control" aria-label="Sizing example input"aria-describedby="inputGroup-sizing-default">
+    </div>
+    <a class="btn btn-primary btn-lg" href="#" role="button" id="submit">Submit</a>
+</div>
+</div>
+<!-- Creating highscores display -->
+<div class="container" id="highscores" style="display: ;">
+<div class="card m-4 text-center">
+    <div class="card-body">
+        <h1 class="card-title">Highscores</h1>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"></li>
+        <li class="list-group-item"></li>
+        <li class="list-group-item"></li>
+    </ul>
+    <div class="card-body">
+        <a href="#" class="btn">Start Over</a>   
+    </div>
+</div>
+</div>
+<script src="quiz.js"></script>
+
+</body>
+</html>
