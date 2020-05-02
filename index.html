@@ -15,6 +15,7 @@
 
         <h4 class="card-text">Press start button to begin quiz</h4>
         <a href="#" class="btn btn-primary" id="startBtn">Start Quiz</a>
+        <a href="#" class="btn btn-danger" id="view"> View Highscores</a>
     </div>
 </div>
 </div>
@@ -30,9 +31,7 @@
         <li class="list-group-item" id="choice3">C</li>
         <li class="list-group-item" id="choice4">D</li>
     </ul>
-    <div class="card-body" id="timer">
-
-    </div>
+    <div class="card-body" id="timer"></div>
 </div>
 </div>
 <!-- Saving highscores and initials -->
@@ -64,9 +63,11 @@
 </div>
 <script type="text/javascript" src="quiz.js"></script>
 <script>
+
     // Grabing HTML elements and declaring them as variables
     var start = document.getElementById("start");
     var startBtn = document.getElementById("startBtn");
+    var viewBtn = document.getElementById("view");
 
     var quiz = document.getElementById("quiz");
     var title = document.getElementById("title");
@@ -92,6 +93,7 @@
     var lastQuestionIndex = questions.length - 1;
     var currentQuestionIndex = 0;
 
+    var score = 0;
     // Function to render questions
 
     function renderQuestion() {
@@ -104,17 +106,86 @@
         choice4.innerHTML = q.choices[3];
     };
 
-    // Function to initialize time
+    // Initialize time
+    var questionTime = 15;
+    var timerLength = questionTime * questions.length;
 
-
+    timer.innerHTML = timerLength
 
     // Button to initialize the quiz
     startBtn.addEventListener("click", function(){
         start.style.display = "none"
         quiz.style.display = ""
 
-        renderQuestion();
+        setInterval(function(){
+        timerLength--;
 
+        if(timerLength >= 0){
+        timer.innerHTML = timerLength
+        }
+        }, 1000)
+        renderQuestion();
+    });
+
+    // Button to view highscores
+    viewBtn.addEventListener("click", function(){
+        start.style.display = "none";
+        highscores.style.display = ""
+    });
+
+    // Restart quiz from Highscore page
+    restart.addEventListener("click", function(){
+        highscores.style.display = "none";
+        start.style.display = "";
+    });
+
+    // Write function for progressing through the quiz
+    choice1.addEventListener("click", function(){
+        if (choice1.innerHTML = questions[currentQuestionIndex].answer){
+            currentQuestionIndex++;
+            renderQuestion();
+            score + 10
+        } else if(choice4.innerHTML != questions[currentQuestionIndex].answer) {
+            currentQuestionIndex++;
+            renderQuestion();
+            timer.innerHTML - 15;
+        }
+    });
+
+    choice2.addEventListener("click", function(){
+        if (choice2.innerHTML = questions[currentQuestionIndex].answer){
+            currentQuestionIndex++;
+            renderQuestion();
+            score + 10
+        } else if(choice4.innerHTML != questions[currentQuestionIndex].answer) {
+            currentQuestionIndex++;
+            renderQuestion();
+            timer.innerHTML - 15;
+        }
+    });
+
+    choice3.addEventListener("click", function(){
+        if (choice3.innerHTML = questions[currentQuestionIndex].answer){
+            currentQuestionIndex++;
+            renderQuestion();
+            score + 10
+        } else if(choice4.innerHTML != questions[currentQuestionIndex].answer) {
+            currentQuestionIndex++;
+            renderQuestion();
+            timer.innerHTML - 15;
+        }
+    });
+
+    choice4.addEventListener("click", function(){
+        if (choice4.innerHTML = questions[currentQuestionIndex].answer){
+            currentQuestionIndex++;
+            renderQuestion();
+            score + 10
+        } else if(choice4.innerHTML != questions[currentQuestionIndex].answer) {
+            currentQuestionIndex++;
+            renderQuestion();
+            timer.innerHTML - 15;
+        }
     });
 
 
