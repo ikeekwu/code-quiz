@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-<!-- Creating qui start display -->
-<div class="container" id="start" style="display: none;">
+<!-- Creating quiz start display -->
+<div class="container" id="start" style="display: ;">
 <div class="card m-5">
     <h1 class="card-header text-center">Quiz</h1>
     <div class="card-body p-5 text-center">
 
         <h4 class="card-text">Press start button to begin quiz</h4>
-        <a href="#" class="btn btn-primary">Start Quiz</a>
+        <a href="#" class="btn btn-primary" id="startBtn">Start Quiz</a>
     </div>
 </div>
 </div>
@@ -22,9 +22,9 @@
 <div class="container" id="quiz" style="display: none ;">
 <div class="card m-5">
     <div class="card-body">
-        <h4 class="card-text" id="title"> Question here</h4>
+        <h4 class="card-text" id="title"></h4>
     </div>
-    <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush" id="choices">
         <li class="list-group-item" id="choice1">A</li>
         <li class="list-group-item" id="choice2">B</li>
         <li class="list-group-item" id="choice3">C</li>
@@ -47,22 +47,77 @@
 </div>
 </div>
 <!-- Creating highscores display -->
-<div class="container" id="highscores" style="display: ;">
+<div class="container" id="highscores" style="display: none;">
 <div class="card m-4 text-center">
     <div class="card-body">
         <h1 class="card-title">Highscores</h1>
     </div>
-    <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush" id="rank">
         <li class="list-group-item"></li>
         <li class="list-group-item"></li>
         <li class="list-group-item"></li>
     </ul>
     <div class="card-body">
-        <a href="#" class="btn">Start Over</a>   
+        <a href="#" class="btn" id="restart">Start Over</a>   
     </div>
 </div>
 </div>
-<script src="quiz.js"></script>
+<script type="text/javascript" src="quiz.js"></script>
+<script>
+    // Grabing HTML elements and declaring them as variables
+    var start = document.getElementById("start");
+    var startBtn = document.getElementById("startBtn");
 
+    var quiz = document.getElementById("quiz");
+    var title = document.getElementById("title");
+
+    var choices = document.getElementById("choices");
+
+    var choice1 = document.getElementById("choice1");
+    var choice2 = document.getElementById("choice2");
+    var choice3 = document.getElementById("choice3");
+    var choice4 = document.getElementById("choice4");
+
+    var timer = document.getElementById("timer");
+
+    var saveScores = document.getElementById("saveHighscores");
+    var score = document.getElementById("score");
+    var initials = document.getElementById("initials");
+    var submit = document.getElementById("submit");
+
+    var highscores = document.getElementById("highscores");
+    var rankedScores = document.getElementById("rank");
+    var restart = document.getElementById("restart");
+
+    var lastQuestionIndex = questions.length - 1;
+    var currentQuestionIndex = 0;
+
+    // Function to render questions
+
+    function renderQuestion() {
+        let q = questions[currentQuestionIndex];
+        title.innerHTML = q.title;
+
+        choice1.innerHTML = q.choices[0];
+        choice2.innerHTML = q.choices[1];
+        choice3.innerHTML = q.choices[2];
+        choice4.innerHTML = q.choices[3];
+    };
+
+    // Function to initialize time
+
+
+
+    // Button to initialize the quiz
+    startBtn.addEventListener("click", function(){
+        start.style.display = "none"
+        quiz.style.display = ""
+
+        renderQuestion();
+
+    });
+
+
+</script>
 </body>
 </html>
